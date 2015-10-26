@@ -69,6 +69,12 @@ LOCAL_SRC_FILES:= \
     StringArray.cpp \
     AudioPolicy.cpp
 
+ifeq ($(BOARD_USES_WFD_SERVICE),true)
+LOCAL_SRC_FILES += \
+    IWFDService.cpp \
+    WFDService.cpp \
+    WFDServiceListener.cpp
+endif
 
 #QTI Resampler
 ifeq ($(call is-vendor-board-platform,QCOM), true)
