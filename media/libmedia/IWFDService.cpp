@@ -66,7 +66,7 @@ struct BpWFDService : public BpInterface<IWFDService> {
                         const sp<IWFDServiceListener> &listener) {
         Parcel data, reply;
         data.writeInterfaceToken(BpWFDService::getInterfaceDescriptor());
-        data.writeStrongBinder(listener->asBinder());
+        data.writeStrongBinder(IInterface::asBinder(listener));
         remote()->transact(WFD_ADD_LISTENER, data, &reply);
         return reply.readInt32();
     }
@@ -75,7 +75,7 @@ struct BpWFDService : public BpInterface<IWFDService> {
                         const sp<IWFDServiceListener> &listener) {
         Parcel data, reply;
         data.writeInterfaceToken(BpWFDService::getInterfaceDescriptor());
-        data.writeStrongBinder(listener->asBinder());
+        data.writeStrongBinder(IInterface::asBinder(listener));
         remote()->transact(WFD_REMOVE_LISTENER, data, &reply);
         return reply.readInt32();
     }
