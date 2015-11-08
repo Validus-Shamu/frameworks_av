@@ -84,6 +84,11 @@ exit:
     return OK;
 }
 
+status_t MediaBufferGroup::acquire_buffer(
+        MediaBuffer **out) {
+    return acquire_buffer(out, false);
+}
+
 void MediaBufferGroup::signalBufferReturned(MediaBuffer *) {
     Mutex::Autolock autoLock(mLock);
     mCondition.signal();
